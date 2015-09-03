@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    
-    <meta name="description" content="Sinhala Hodiya">
-    <meta name="author" content="github.com/janithl">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Sinhala Hodiya</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+	<meta name="description" content="Sinhala Hodiya">
+	<meta name="author" content="github.com/janithl">
 
-  <body>
-    <div class="container">
+	<title>Sinhala Hodiya</title>
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
 
-    </div><!-- /.container -->
-  </body>
+<body>
+	<div class="container">
+		<table class="table table-bordered">
+			<tbody id="hodiya-table"></tbody>
+		</table>
+	</div><!-- /.container -->
+	<script>
+	var vowels = [0x0DCA, 0x0DCF, 0x0DD0, 0x0DD1, 0x0DD2, 0x0DD3, 0x0DD4, 
+	0x0DD6, 0x0DD8, 0x0DF2, 0x0DF3, 0x0DD9, 0x0DDA, 0x0DDB, 0x0DDC, 
+	0x0DDD, 0x0DDE, 0x0DDF, 0x0D82, 0x0D83];
+	var conson = [
+	"ක", "ඛ", "ග", "ඝ", "ඞ", "ඟ", 
+	"ච", "ඡ", "ජ", "ඣ", "ඤ", "ඥ", "ඦ", 
+	"ට", "ඨ", "ඩ", "ඪ", "ණ", "ඬ", 
+	"ත", "ථ", "ද", "ධ", "න", "ඳ", 
+	"ප", "ඵ", "බ", "භ", "ම", "ඹ", 
+	"ය", "ර", "ල", "ව", 
+	"ශ", "ෂ", "ස", "හ", "ළ", "ෆ"];
+	
+	var tbody = document.getElementById('hodiya-table');
+	var trow, tcell;
+	(function() {
+		for(var i = 0; i < conson.length; i++) {
+			trow = document.createElement('tr');
+			tcell = document.createElement('td');
+			tcell.className = 'text-center';
+			tcell.innerHTML = conson[i];
+			trow.appendChild(tcell);
+			
+			for(var j = 0; j < vowels.length; j++) {
+				tcell = document.createElement('td');
+				tcell.className = 'text-center';
+				tcell.innerHTML = conson[i] + String.fromCodePoint(vowels[j]);
+				trow.appendChild(tcell);
+			}
+			tbody.appendChild(trow);
+		}
+	})();
+	</script>
+</body>
 </html>
 
 
