@@ -39,20 +39,28 @@
 	
 	var tbody = document.getElementById('hodiya-table');
 	var trow, tcell;
+	
+	function tableCell(c) {
+		tcell = document.createElement('td');
+		tcell.className = 'text-center';
+		tcell.innerHTML = c
+		trow.appendChild(tcell);
+	}
+	
 	(function() {
 		for(var i = 0; i < conson.length; i++) {
 			trow = document.createElement('tr');
-			tcell = document.createElement('td');
-			tcell.className = 'text-center';
-			tcell.innerHTML = conson[i];
-			trow.appendChild(tcell);
+			tableCell(conson[i].charCodeAt(0));
+			tableCell(conson[i]);
 			
 			for(var j = 0; j < vowels.length; j++) {
-				tcell = document.createElement('td');
-				tcell.className = 'text-center';
-				tcell.innerHTML = conson[i] + String.fromCodePoint(vowels[j]);
-				trow.appendChild(tcell);
+				tableCell(conson[i] + String.fromCodePoint(vowels[j]));
 			}
+			
+			tableCell('ර' + String.fromCodePoint(vowels[0]) + String.fromCodePoint(0x200d) + conson[i]);
+			tableCell(conson[i] + String.fromCodePoint(vowels[0]) + String.fromCodePoint(0x200d) + 'ර');
+			tableCell(conson[i] + String.fromCodePoint(vowels[0]) + String.fromCodePoint(0x200d) + 'ය');
+			
 			tbody.appendChild(trow);
 		}
 	})();
