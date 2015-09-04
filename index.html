@@ -20,14 +20,43 @@
 
 <body>
 	<div class="container">
-		<table class="table table-bordered">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th class="text-center">Code</th>
+					<th class="text-center">්</th>
+					<th class="text-center">අ</th>
+					<th class="text-center">ආ</th>
+					<th class="text-center">ඇ</th>
+					<th class="text-center">ඈ</th>
+					<th class="text-center">ඉ</th>
+					<th class="text-center">ඊ</th>
+					<th class="text-center">උ</th>
+					<th class="text-center">ඌ</th>
+					<th class="text-center">ඍ</th>
+					<th class="text-center">ඎ</th>
+					<th class="text-center">ඏ</th>
+					<th class="text-center">ඐ</th>
+					<th class="text-center">එ</th>
+					<th class="text-center">ඒ</th>
+					<th class="text-center">ඓ</th>
+					<th class="text-center">ඔ</th>
+					<th class="text-center">ඕ</th>
+					<th class="text-center">ඖ</th>
+					<th class="text-center">අං</th>
+					<th class="text-center">අඃ</th>
+					<th class="text-center">ර්+</th>
+					<th class="text-center">්+ර</th>
+					<th class="text-center">්+ය</th>
+				</tr>
+			</thead>
 			<tbody id="hodiya-table"></tbody>
 		</table>
 	</div><!-- /.container -->
 	<script>
-	var vowels = [0x0DCA, 0x0DCF, 0x0DD0, 0x0DD1, 0x0DD2, 0x0DD3, 0x0DD4, 
-	0x0DD6, 0x0DD8, 0x0DF2, 0x0DF3, 0x0DD9, 0x0DDA, 0x0DDB, 0x0DDC, 
-	0x0DDD, 0x0DDE, 0x0DDF, 0x0D82, 0x0D83];
+	var vowels = [0x0DCA, 0, 0x0DCF, 0x0DD0, 0x0DD1, 0x0DD2, 0x0DD3, 0x0DD4, 
+	0x0DD6, 0x0DD8, 0x0DF2, 0x0DDF, 0x0DF3, 0x0DD9, 0x0DDA, 0x0DDB, 0x0DDC, 
+	0x0DDD, 0x0DDE, 0x0D82, 0x0D83];
 	var conson = [
 	"ක", "ඛ", "ග", "ඝ", "ඞ", "ඟ", 
 	"ච", "ඡ", "ජ", "ඣ", "ඤ", "ඥ", "ඦ", 
@@ -50,8 +79,7 @@
 	(function() {
 		for(var i = 0; i < conson.length; i++) {
 			trow = document.createElement('tr');
-			tableCell(conson[i].charCodeAt(0));
-			tableCell(conson[i]);
+			tableCell('U+0' + conson[i].charCodeAt(0).toString(16).toUpperCase());
 			
 			for(var j = 0; j < vowels.length; j++) {
 				tableCell(conson[i] + String.fromCodePoint(vowels[j]));
