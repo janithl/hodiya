@@ -88,7 +88,9 @@
 		}
 		else {
 			tcell.innerHTML = '<a tabindex="0" role="button" data-toggle="popover" ' + 
-			'data-trigger="focus" data-placement="bottom" title="Glyph" data-content="' + 
+			'data-trigger="focus" data-placement="bottom" title="U+0' + 
+			c.charCodeAt(0).toString(16).toUpperCase() + (isNaN(c.charCodeAt(1)) ? '' :
+			(' & U+0' + c.charCodeAt(1).toString(16).toUpperCase())) + '" data-content="' + 
 			c + '">' + c + '</a>';
 		}
 		trow.appendChild(tcell);
@@ -104,7 +106,12 @@
 			tableCell('U+0' + conson[i].charCodeAt(0).toString(16).toUpperCase(), true);
 			
 			for(var j = 0; j < vowels.length; j++) {
-				tableCell(conson[i] + String.fromCodePoint(vowels[j]));
+				if(vowels[j] === 0) {
+					tableCell(conson[i]);
+				}
+				else {
+					tableCell(conson[i] + String.fromCodePoint(vowels[j]));
+				}
 			}
 			
 			tableCell('ර' + String.fromCodePoint(vowels[0]) + String.fromCodePoint(0x200d) + conson[i]);
